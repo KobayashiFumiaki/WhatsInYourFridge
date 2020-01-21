@@ -1,0 +1,39 @@
+<!-- <title>{{ 料理名 }}の検索結果 (x件)</title> -->
+<!-- 残骸 -->
+{% extends "header.html" %} {% block title %}find{% end %} {% block content %}
+<div class="row">
+  <div class="col">
+    <div class="text-center">
+      <form action="/search" method="POST">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>料理名</th>
+              <th>レシピへ</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for coo in cooking_names %}
+            <tr>
+              <td>{{ coo["cooking_name"] }}</td>
+              <td>
+                <button type="submit" class="btn btn-outline-info">
+                  <a href="/menu?form-word={{ coo['cooking_name'] }}"
+                    >レシピへ</a
+                  >
+                </button>
+              </td>
+            </tr>
+            {% end %}
+          </tbody>
+        </table>
+      </form>
+      {% if not cooking_names %}
+      <div class="alert alert-info" role="alert">
+        データがありません。
+      </div>
+      {% end %}
+    </div>
+  </div>
+</div>
+{% end %}

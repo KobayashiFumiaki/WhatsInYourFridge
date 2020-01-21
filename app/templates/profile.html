@@ -1,0 +1,51 @@
+{% extends "header.html" %} {% block title %}Profile{% end %}
+{% block add_scripts %}
+<script defer src="{{static_url("js/menu.js") }}"></script>
+{% end %}
+{% block content%}
+<!-- profile -->
+<div class="profile container">
+
+
+</div>
+
+<!-- favorites list -->
+<div class="favorites container">
+  <span class="user-name">{{ user.attr["user_name"] }}</span>
+  <form  action="/profile" method="POST">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>レシピ名</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for coo,fav in zip(cooking_names,favorites )%}
+      <tr>
+        <td class="favorite">{{coo["cooking_name"]}}</td>
+        <td><button type="submit" class="btn btn-outline-info"><a href="/menu?form-word={{coo['cooking_name']}}">レシピへ</a></button></td>
+          <td>
+            <input type="hidden" name="fav" value="{{fav['favorites_id']}}">
+            <input type="hidden" name="f-word" value="{{coo['cooking_name']}}">
+            <button type="submit" class="btn btn-outline-dark">
+              {% if fav['favorites_id'] is None %}
+              お気に入り<i id="favorite" class="far fa-star"></i>
+              {% else %}
+              お気に入り<i id="favorite" class="fas fa-star"></i>
+              {% end %}
+            </button>
+          </button>
+        </td>
+      </tr>
+      {% end %}
+    </tbody>
+  </table>
+  </form>
+  <div class="text-right">
+    <!-- delete user -->
+    <!-- <button class="btn btn-outline-danger">アカウントを削除</button> -->
+  </div>
+</div>
+{% end %}
