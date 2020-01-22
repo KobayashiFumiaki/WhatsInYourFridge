@@ -25,61 +25,61 @@ id="bootstrap-css"
   />
 </head>
 <!--Coded with love by Mutiullah Samim-->
-<body>
+<body style="background-color:#FFF4ED">
   {% if errors %}
-  {{errors}}
+  <div class="alert alert-danger text-center" role="alert">
+    {{errors}}
+  </div>
   {% end %}
-  <div class="container h-100">
-    <div class="d-flex justify-content-center h-100">
-      <div class="user_card">
-        <div class="d-flex justify-content-center form_container">
-          <form class="form-signup" action="/signup" method="POST">
-            ユーザID　８文字以上入力してください
-            <div class="input-group mb-3">
-              <div class="input-group-append">
-                <span class="input-group-text"
-                ><i class="fas fa-user"></i
-                  ></span>
-                </div>
-                <input
-                type="name"
-                id="inputName"
-                name="form-name"
-                class="form-control form-control-first input_user"
-                placeholder="ID(username)"
-                />
-              </div>
-              パスワード　半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上入力してください
-              <div class="input-group mb-2">
-                <div class="input-group-append">
-                  <span class="input-group-text"
-                  ><i class="fas fa-key"></i
-                    ></span>
-                  </div>
-                  <input
-                  type="password"
-                  id="input-password"
-                  name="form-password"
-                  class="form-control form-control-last input_pass"
-                  placeholder="password"
-                  />
-                </div>
-                <div class="form-group"></div>
-                <div class="d-flex justify-content-center mt-3 login_container">
-                  <button type="submit" class="btn login_btn">
-                    Signup
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div class="mt-4">
-              <div class="d-flex justify-content-center links">
-                <a href="/signin" class="ml-2">Sign In</a>
-              </div>
-            </div>
+  <div class="card mx-auto" style="width:30%;margin-top:10%">
+    <div class="card-header">
+      <h5 class="text-center">What's in Your Fridge?</h5>
+    </div>
+    <div class="card-body mt-3">
+      <form class="form-signup" action="/signup" method="POST">
+        <span>8文字以上入力してください</span>
+        <div class="input-group mb-2">
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="fas fa-user" style="padding:0 1px"></i>
+            </span>
           </div>
+          <input
+          type="name"
+          id="inputName"
+          name="form-name"
+          class="form-control form-control-first input_user"
+          placeholder="UserID(username)"
+          required
+          />
         </div>
-      </div>
-    </form>
-  </body>
-  </html>
+        <span>半角英小文字大文字数字をそれぞれ1種類以上含む<br>8文字以上入力してください</span>
+        <div class="input-group">
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="fas fa-key"></i>
+            </span>
+          </div>
+          <input
+          type="password"
+          id="input-password"
+          name="form-password"
+          class="form-control form-control-last input_pass"
+          placeholder="Password"
+          required
+          />
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+          <button type="submit" class="btn btn-primary">
+            ユーザー登録
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    ログインしたい方は
+    <a href="/signin">こちら</a>
+  </div>
+</body>
+</html>

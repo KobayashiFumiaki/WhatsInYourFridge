@@ -3,12 +3,6 @@
 <script defer src="{{static_url("js/menu.js") }}"></script>
 {% end %}
 {% block content%}
-<!-- profile -->
-<div class="profile container">
-
-
-</div>
-
 <!-- favorites list -->
 <div class="favorites container">
   <span class="user-name">{{ user.attr["user_name"] }}</span>
@@ -48,9 +42,9 @@
       </tbody>
     </table>
   </form>
-  <div class="text-right">
-    <!-- delete user -->
-    <!-- <button class="btn btn-outline-danger">アカウントを削除</button> -->
-  </div>
+  <!-- delete user -->
+  <!-- <div class="text-right">
+    <button class="btn btn-outline-danger">アカウントを削除</button>
+  </div> -->
 </div>
 {% end %}

@@ -25,56 +25,54 @@ id="bootstrap-css"
   />
 </head>
 <!--Coded with love by Mutiullah Samim-->
-<body>
-  <div class="container h-100">
-    <div class="d-flex justify-content-center h-100">
-      <div class="user_card">
-        <div class="d-flex justify-content-center form_container">
-          <form class="form-signin" action="/signin" method="POST">
-            <div class="input-group mb-3">
-              <div class="input-group-append">
-                <span class="input-group-text"
-                ><i class="fas fa-user"></i
-                  ></span>
-                </div>
-                <input
-                type="name"
-                name="form-name"
-                id="inputName"
-                class="form-control input_user form-control-first"
-                placeholder="ID(username)"
-                />
-              </div>
-              <div class="input-group mb-2">
-                <div class="input-group-append">
-                  <span class="input-group-text"
-                  ><i class="fas fa-key"></i
-                    ></span>
-                  </div>
-                  <input
-                  type="password"
-                  id="input-Password"
-                  name="form-password"
-                  class="form-control input_pass form-control-last"
-                  placeholder="password"
-                  />
-                </div>
-                <div class="form-group"></div>
-                <div class="d-flex justify-content-center mt-3 login_container">
-                  <button type="submit" name="button" class="btn login_btn">
-                    Login
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div class="mt-4">
-              <div class="d-flex justify-content-center links">
-                Don't have an account?
-                <a href="/signup" class="ml-2">Sign Up</a>
-              </div>
-            </div>
+<body style="background-color:#FFF4ED">
+  <div class="card mx-auto" style="width:30%;margin-top:10%">
+    <div class="card-header">
+      <h5 class="text-center">What's in Your Fridge?</h5>
+    </div>
+    <div class="card-body mt-3">
+      <form class="form-signin" action="/signin" method="POST">
+        <div class="input-group">
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="fas fa-user" style="padding:0 1px"></i>
+            </span>
           </div>
+          <input
+          type="name"
+          name="form-name"
+          id="inputName"
+          class="form-control input_user form-control-first"
+          placeholder="UserID(username)"
+          required
+          />
         </div>
-      </div>
-    </body>
-    </html>
+        <div class="input-group mt-2">
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="fas fa-key"></i>
+            </span>
+          </div>
+          <input
+          type="password"
+          id="input-Password"
+          name="form-password"
+          class="form-control input_pass form-control-last"
+          placeholder="Password"
+          required
+          />
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+          <button type="submit" class="btn btn-primary">
+            ログイン
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    ユーザー登録されていない方は
+    <a href="/signup">こちら</a>
+  </div>
+</body>
+</html>
