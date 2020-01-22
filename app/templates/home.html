@@ -7,18 +7,18 @@
     <h1 class="title text-center" style="width: 100%">おすすめメニュー</h1>
   </div>
   <div class="col-4">
-    <h4 class="text-center" style="width: 90%">アクセス履歴</h4>
+    <h4 class="text-center" style="width: 100%">アクセス履歴</h4>
   </div>
 </div>
 <div class="row mx-auto">
   <div class="col">
-    <div class="card" style="width: 100%">
+    <div class="card mx-auto" style="width: 80%">
       <img src="static/img/omuraisu.jpg" width="100%" class="mx-auto" />
       <a href="/menu?form-word=オムライス" class="text-info text-center"
       >オムライス</a
       >
     </div>
-    <div class="card" style="width: 100%">
+    <div class="card mx-auto" style="width: 80%">
       <img src="static/img/mabodofu.jpg" width="100%" class=" mx-auto" />
       <a href="/menu?form-word=麻婆豆腐" class="text-success text-center"
       >麻婆豆腐</a
@@ -27,11 +27,11 @@
   </div>
   <div class="col-4">
     {% if menulog is 'null' %}
-    <div class="alert alert-dark" role="alert">
+    <div class="alert alert-dark mx-auto" role="alert">
       アクセス履歴がありません
     </div>
     {% else %}
-    <ul class="list-group mx-auto" style="width: 80%">
+    <ul class="list-group mx-auto mx-auto" style="width: 80%">
       {% for Log in menulog %}
       <a href="/menu?form-word={{ Log['cooking_name'] }}" class="list">
         <button class="btn btn-outline-info list-group-item text-center" style="width:100%">
