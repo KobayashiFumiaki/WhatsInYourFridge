@@ -26,6 +26,11 @@ id="bootstrap-css"
 </head>
 <!--Coded with love by Mutiullah Samim-->
 <body style="background-color:#FFF4ED">
+  {% if errors %}
+  <div class="alert alert-danger text-center" role="alert">
+    ログインに失敗しました
+  </div>
+  {% end %}
   <div class="card mx-auto" style="width:30%;margin-top:10%">
     <div class="card-header">
       <h5 class="text-center">What's in Your Fridge?</h5>
