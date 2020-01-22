@@ -13,19 +13,25 @@
 <div class="favorites container">
   <span class="user-name">{{ user.attr["user_name"] }}</span>
   <form  action="/profile" method="POST">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>レシピ名</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for coo,fav in zip(cooking_names,favorites )%}
-      <tr>
-        <td class="favorite">{{coo["cooking_name"]}}</td>
-        <td><button type="submit" class="btn btn-outline-info"><a href="/menu?form-word={{coo['cooking_name']}}">レシピへ</a></button></td>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>レシピ名</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for coo,fav in zip(cooking_names,favorites )%}
+        <tr>
+          <td class="favorite">{{coo["cooking_name"]}}</td>
+          <td>
+            <a href="/menu?form-word={{coo['cooking_name']}}">
+              <button type="submit" class="btn btn-outline-info">
+                レシピへ
+              </button>
+            </a>
+          </td>
           <td>
             <input type="hidden" name="fav" value="{{fav['favorites_id']}}">
             <input type="hidden" name="f-word" value="{{coo['cooking_name']}}">
@@ -36,12 +42,11 @@
               お気に入り<i id="favorite" class="fas fa-star"></i>
               {% end %}
             </button>
-          </button>
-        </td>
-      </tr>
-      {% end %}
-    </tbody>
-  </table>
+          </td>
+        </tr>
+        {% end %}
+      </tbody>
+    </table>
   </form>
   <div class="text-right">
     <!-- delete user -->

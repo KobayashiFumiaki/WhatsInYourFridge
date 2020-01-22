@@ -4,64 +4,60 @@
 <script defer src="{{static_url("js/menu.js") }}"></script>
 {% end %}
 {% block content %}
-<div class="card mx-auto menu" style="width: 90%; padding:20px 0; margin-top: 20px;">
-  <div class="row">
-    <div class="col">
-      <h4 class="card-title text-center"> {{cooking_name}} </h4>
-    </div>
-    <div class="col">
-      <form class="text-center" action="/menu" method="POST">
-        <input type="hidden" name="fav" value="{{favorite}}">
-        <input type="hidden" name="f-word" value="{{cooking_name}}">
-        <button type="submit" class="btn btn-outline-dark" >
-          {% if favorite is None %}
-          お気に入り<i id="favorite" class="far fa-star"></i>
-          {% else %}
-          お気に入り<i id="favorite" class="fas fa-star"></i>
-          {% end %}
-        </button>
-      </form>
+<div class="row">
+  <div class="col">
+    <h4 class="card-title text-center"> {{cooking_name}} </h4>
+  </div>
+  <div class="col">
+    <form class="text-right" action="/menu" method="POST" style="margin-right:10%">
+      <input type="hidden" name="fav" value="{{favorite}}">
+      <input type="hidden" name="f-word" value="{{cooking_name}}">
+      <button type="submit" class="btn btn-outline-dark" >
+        {% if favorite is None %}
+        お気に入り<i id="favorite" class="far fa-star"></i>
+        {% else %}
+        お気に入り<i id="favorite" class="fas fa-star"></i>
+        {% end %}
+      </button>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="card-body" style="margin-top: 10%">
+      <img class="card-img-top mx-auto" src="{{img}}" />
     </div>
   </div>
-  <div class="row">
-    <div class="col">
-      <div class="card-body">
-        <img class="card-img-top mx-auto" src="{{img}}" />
-      </div>
-    </div>
-    <div class="col">
-      <div class="card-body">
-        <h5>材料</h5>
-        <div class="row">
-          <div class="col" style="padding: 0">
-            <ul id="foodstaffs" class="list-group">
-              {% for ing in ingredient %}
-              <li class="list-group-item">{{ ing.attr["ingredient_name"] }}</li>
-              {% end %}
-            </ul>
-          </div>
-          <div class="col" style="padding: 0">
-            <ul id="foodstaffsnum" class="list-group">
-              {% for am in amount %}
-              <li class="list-group-item">{{ am.attr["ingredient_number"] }}</li>
-              {% end %}
-            </ul>
-          </div>
+  <div class="col">
+    <h5 class="text-left">材料</h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="col" style="padding: 0">
+          <ul id="foodstaffs" class="list-group">
+            {% for ing in ingredient %}
+            <li class="list-group-item">{{ ing.attr["ingredient_name"] }}</li>
+            {% end %}
+          </ul>
+        </div>
+        <div class="col" style="padding: 0">
+          <ul id="foodstaffsnum" class="list-group">
+            {% for am in amount %}
+            <li class="list-group-item">{{ am.attr["ingredient_number"] }}</li>
+            {% end %}
+          </ul>
         </div>
       </div>
     </div>
   </div>
-  <div class="mx-auto" style="width: 90%">
-    <h5 class="text-left">作り方</h5>
-    <div class="row">
-      <ul id="recipes" class="list-group">
-        {% for recipe_number,recipe in zip(recipe_numbers,recipes) %}
-        <li class="list-group-item">手順{{recipe_number}}&nbsp;&nbsp;{{recipe.attr["recipe_description"]}} </li>
-        {% end %}
-      </ul>
-    </div>
+</div>
+<div class="mx-auto" style="width: 90%">
+  <h5 class="text-left">作り方</h5>
+  <div class="row">
+    <ul id="recipes" class="list-group" style="width:100%">
+      {% for recipe_number,recipe in zip(recipe_numbers,recipes) %}
+      <li class="list-group-item">手順{{recipe_number}}&nbsp;&nbsp;{{recipe.attr["recipe_description"]}} </li>
+      {% end %}
+    </ul>
   </div>
 </div>
 {% end %}
-
-

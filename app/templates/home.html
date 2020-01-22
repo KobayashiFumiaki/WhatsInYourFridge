@@ -2,71 +2,45 @@
 {% if not error %} {% else %}
 {{ error }}
 {% end %}
-<div class="row">
+<div class="row mx-auto">
   <div class="col">
-    <h1 class="title text-center" style="width: 100%">[おすすめメニュー]</h1>
+    <h1 class="title text-center" style="width: 100%">おすすめメニュー</h1>
   </div>
-  <div class="col">
-    <h4 class="text-center" style="width: 90%">[過去のアクセスログ]</h4>
+  <div class="col-4">
+    <h4 class="text-center" style="width: 90%">アクセス履歴</h4>
   </div>
 </div>
-<div class="row">
+<div class="row mx-auto">
   <div class="col">
     <div class="card" style="width: 100%">
       <img src="static/img/omuraisu.jpg" width="100%" class="mx-auto" />
       <a href="/menu?form-word=オムライス" class="text-info text-center"
-        >オムライス</a
+      >オムライス</a
       >
     </div>
     <div class="card" style="width: 100%">
       <img src="static/img/mabodofu.jpg" width="100%" class=" mx-auto" />
       <a href="/menu?form-word=麻婆豆腐" class="text-success text-center"
-        >麻婆豆腐</a
+      >麻婆豆腐</a
       >
     </div>
-    <!-- <div class="card" style="width: 100%">
-      <img src="static/img/hamburg.jpg" width="100%" class=" mx-auto" />
-      <a href="/menu?form-word=ハンバーグ" class="text-center">ハンバーグ</a>
-    </div> -->
   </div>
-  <div class="col">
-    <div class="card mx-auto" 　style="width: 80%">
-      {% if menulog is 'null' %}
-      <span>ログはありません</span>
-      {% else %}
-      <div class="list-group">
-        {% for Log in menulog %}
-        <li class="bg-warning list-group-item">
-          <a href="/menu?form-word={{ Log['cooking_name'] }}" class="list">{{
-            Log["cooking_name"]
-          }}</a>
-        </li>
-        {% end %}
-      </div>
+  <div class="col-4">
+    {% if menulog is 'null' %}
+    <div class="alert alert-dark" role="alert">
+      アクセス履歴がありません
+    </div>
+    {% else %}
+    <ul class="list-group mx-auto" style="width: 80%">
+      {% for Log in menulog %}
+      <a href="/menu?form-word={{ Log['cooking_name'] }}" class="list">
+        <button class="btn btn-outline-info list-group-item text-center" style="width:100%">
+          {{ Log["cooking_name"] }}
+        </button>
+      </a>
       {% end %}
-    </div>
-
-    <div class="row">
-      <!-- <div class="card" style="width: 60%;margin-top: 10px;">
-        <img
-          src="static/img/se.png"
-          width="100%"
-          class="mx-auto"
-          border-0
-          style="background:#ffebcd;"
-        />
-      </div> -->
-      <!-- <div class="row">
-        <div class="col">
-          <div
-            class="card float-right"
-            style="width: 75%;margin-top: 10px;margin-right:10px;"
-          >
-            <img src="static/img/sample2.jpg" width="100%" class=" mx-right" />
-          </div>
-        </div>
-      </div> -->
-    </div>
+    </ul>
+    {% end %}
   </div>
 </div>
 {% end %}
