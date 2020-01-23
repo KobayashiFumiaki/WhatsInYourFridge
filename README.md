@@ -15,4 +15,4 @@ localhost:8888のjupyternotebookに接続しターミナルを開く
 $python server.py migrate
 $python server.py
 ```
-localhost:3000に接続
+localhost:3000/signupに接続
