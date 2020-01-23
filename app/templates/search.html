@@ -17,11 +17,11 @@
             <tr>
               <td>{{ coo["cooking_name"] }}</td>
               <td>
-                <button type="submit" class="btn btn-outline-info">
-                  <a href="/menu?form-word={{ coo['cooking_name'] }}"
-                  >レシピへ</a
-                  >
-                </button>
+                <a href="/menu?form-word={{ coo['cooking_name'] }}">
+                  <button type="button" class="btn btn-outline-info">
+                    レシピへ
+                  </button>
+                </a>
               </td>
             </tr>
             {% end %}

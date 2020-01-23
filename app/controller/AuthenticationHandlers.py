@@ -40,9 +40,10 @@ class SigninHandler(SigninBaseHandler):
         messages = []
         if _message is not None:
             messages.append(_message)
+        _errors = []
 
         # サインイン画面の表示(パラメータにメッセージが設定されていればそれを渡す)
-        self.render("signin.html")
+        self.render("signin.html", errors=_errors)
 
     def post(self):
         # パラメータの取得
@@ -50,15 +51,15 @@ class SigninHandler(SigninBaseHandler):
         _raw_pass = self.get_argument("form-password", None)
 
         # エラーメッセージの初期化
-        errors = []
+        _errors = []
 
         # 入力項目の必須チェック
         if _name == None or _raw_pass == None:
             if _name == None:
-                errors.append("Sign in ID is required.")
+                _errors.append("Nameを入力してください")
             if _raw_pass == None:
-                errors.append("Password is required.")
-            self.render("signin.html", errors=errors, messages=[])
+                _errors.append("Passwordを入力してください")
+            self.render("signin.html", errors=_errors, messages=[])
             return
 
         # 入力されたパスワードをsha224で一方向の暗号化
@@ -70,9 +71,9 @@ class SigninHandler(SigninBaseHandler):
         # 認証(ユーザーが存在する & パスワードが一致する で認証OK)
         if u == None or _pass != u.attr["password"]:
             # 認証失敗
-            errors.append(
-                "Sorry, your ID or password cannot be recognized.")
-            self.render("signin.html", errors=errors, messages=[])
+            _errors.append(
+                "Nameかパスワードが間違っています")
+            self.render("signin.html", errors=_errors, messages=[])
             return
 
         # DBに保管されたユーザーIDを文字列化して暗号化Cookieに格納
